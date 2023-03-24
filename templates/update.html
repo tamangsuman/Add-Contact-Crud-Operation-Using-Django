@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+
+    <meta charset="UTF-8" />
+    <title>Add Your Details</title>
+  </head>
+
+  <body>
+    <h1>Add Your Details</h1>
+
+    <!-- Form to add new todo -->
+    {% for i in contact %}
+    <form method="post">
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="{{i.name}}" required />
+
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        value="{{i.email}}"
+        required
+      />
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" value="{{i.phone}}" required />
+
+      <button type="submit">Update</button>
+    </form>
+    {% endfor %}
+    <!-- Table to display todos -->
+  </body>
+</html>
